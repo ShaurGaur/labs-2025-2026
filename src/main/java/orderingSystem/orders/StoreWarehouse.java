@@ -5,9 +5,17 @@ import java.util.Queue;
 
 public class StoreWarehouse {
     private Queue<Order> orders;
+    private static StoreWarehouse instance;
 
-    public StoreWarehouse() {
+    private StoreWarehouse() {
         this.orders = new ArrayDeque<>();
+    }
+
+    public static StoreWarehouse getInstance() {
+        if (instance == null) {
+            instance = new StoreWarehouse();
+        }
+        return instance;
     }
 
     public void addOrder(Order o) {
